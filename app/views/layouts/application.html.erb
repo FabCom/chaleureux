@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+  
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="app/assets/stylesheets/application.css"/>
   </head>
 
-  <body style="background-image: url('assets/kitten.jpg');background-size: cover; height: 100vh; background-attachment: scroll;">
+  <body 
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.0)), url('assets/kitten.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;"
+  >
     <%=render "partials/navbar"%>
     <%=render "partials/messages"%>
     <%= yield %>
