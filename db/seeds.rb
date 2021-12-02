@@ -35,6 +35,8 @@ Item.all.each do |item|
   Category.all.sample(rand(1..3)).each do |category|
     JoinTableItemCategory.create(item: item, category: category)
   end
+  item.item_picture.attach(io: File.open("app/assets/images/kitten_item.jpg"), filename: "file.png")
+
 end
 
 User.all.each do |user|

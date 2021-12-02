@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'item_pictures/create'
   get 'pages/index'
   get 'pages/presentation'
   get 'pages/contact'
@@ -12,6 +13,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :carts
   resources :join_table_item_carts
+  resources :items, only: [:show] do
+    resources :item_pictures, only: [:create]
+  end
 
-  get '*path' => redirect('/404.html')
+  # get '*path' => redirect('/404.html')
 end

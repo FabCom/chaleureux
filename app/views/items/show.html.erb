@@ -1,9 +1,13 @@
  <div class="container pt-5">
-  <div class="row py-5">
-    <div class="col-5 p-5 bg-dark text-center ">
-      <%= image_tag @item.image_url %>
+  <div class="row justify-content-center">
+    <div class="col-5 my-3 px-0 mx-5 text-center">
+      <%if @item.item_picture.attached?%>
+        <%= image_tag @item.item_picture, alt: 'cat_picture', class: "img-fluid"%>
+      <%else%>
+        <p>=== Il n'y a pas encore d'image de chat lié à cet item ===</p>
+      <%end%>
     </div>
-    <div class="col-6 bg-info my-auto px-5 pt-5 mx-5">
+    <div class="col-5 bg-info my-3 px-5 pt-5 mx-5">
       <h1 class="text-light text-center mb-3"> <%= @item.title %> </h1>
       <h4 class="mb-2 text-dark text-center"> <%= @item.price %> € </h4>
       <% if current_user %>
@@ -24,6 +28,10 @@
       <h2 class="my-4">Description de <i class="text-warning"> <%= @item.title %> </i> </h2>
       <p class="text-muted text-left"> <%= @item.description %> </p>
     </div>
-  </div>
+  <h3>Changer d'image de chat?</h3>
+  <%= form_tag item_item_pictures_path(@item), multipart: true do %>
+    <%= file_field_tag :item_picture %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
 
 </div>
